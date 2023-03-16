@@ -2,47 +2,47 @@
 
 import datetime
 
-def fibonacci(n):
+def fibonacci_recursiva(numero):
+    """
+    La función sirve para recibir un número entero positivo n
 
-  """
-  La función sirve para recibir un número entero positivo n
+    y calcule el número de fibonacci asociado a ese número con bucles.
 
-  y calcule el número de fibonacci asociado a ese número con bucles.
+    Parametros:
 
-  Parametros:
+        - n: numero entero positivo introducido por el usuario
 
-      - n: numero entero positivo introducido por el usuario
+    Salidas:
 
-  Salidas:
+        - numero_fibonacci: es el (numero-2)+(numero+1)
+        """
 
-      - numero_fibonacci: es el (numero-2)+(numero+1)
-  """
+    if numero < 2:
+        return numero
+    else:
+        return fibonacci_recursiva(numero-1) + fibonacci_recursiva(numero-2)
 
-  if n == 0:
-      return 0
-  if n == 1:
-      return 1
-  return fibonacci(n-1) + fibonacci(n-2)
+inicio_recursiva = datetime.datetime.now()
+print(fibonacci_recursiva(40))
+fin = datetime.datetime.now()
+print(fin - inicio_recursiva)
 
 #BUCLES
 
-def fibonaccibucle(n):
+def fibonacci_bucles(numero):
+    numero1 = 0
+    numero2 = 1
+    if numero == 1:
+        return 0
+    elif numero == 2:
+        return 1
+    for i in range(2,numero):
+            total = numero1 + numero2
+            numero1 = numero2
+            numero2 = total
+    return numero2
 
-   a = 0
-   b = 1
-
-   for i in range(n):
-
-       c = b + a
-       a = b
-       b = c
-
-   return a
-
-start_time = datetime.datetime.now()
-
-print(fibonaccibucle(20))
-
-end_time = datetime.datetime.now()
-
-print("El tiempo de ejecución es de: ", end_time - start_time)
+inicio_bucles = datetime.datetime.now()
+print(fibonacci_bucles(40))
+fin = datetime.datetime.now()
+print(fin - inicio_bucles)
